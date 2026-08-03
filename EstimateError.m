@@ -1,10 +1,11 @@
 function error = EstimateError(N, timeDisc, TempEx, TempNum)
+%ESTIMATEERROR Compute RMS error of numerical solution vs exact values.
 
 TempExForComp = TempEx(timeDisc);
 
 % Calculate variance and standard deviation of the error:
-var = sum((TempExForComp(2:end) - TempNum(2:end)).^2) / (N - 1);
-error = sqrt(var);
+errVariance = sum((TempExForComp(2:end) - TempNum(2:end)).^2) / (N - 1);
+error = sqrt(errVariance);
 
 % Present the result
 SciFormat = '%10.5e';

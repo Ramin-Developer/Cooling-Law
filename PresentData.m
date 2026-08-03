@@ -1,4 +1,5 @@
 function PresentData(tStart, tMax, timeDisc, TempEx, TempNum, TempAsymp)
+%PRESENTDATA Plot analytical/numerical results and export comparison figure.
 
 noOfPlotPts = (tMax - tStart) * 2^6;
 t = linspace(tStart, tMax, noOfPlotPts)';
@@ -9,7 +10,7 @@ TempEx = TempEx(t);
 hFig = figure();
 set(hFig, 'Color', 'White');
 set(hFig, 'Name', 'Newton''s Law of Cooling');
-set (hFig, 'Units', 'normalized', 'Position', [0,0,1,1]);
+set(hFig, 'Units', 'normalized', 'Position', [0, 0, 1, 1]);
 plotSize = 32;
 markerSize = 24;
 
@@ -40,6 +41,10 @@ set(hPlot(2), 'LineStyle', 'None', 'Marker', '+', 'MarkerSize', markerSize);
 set(hPlot(3), 'LineWidth', 2);
 grid;
 
-% Convert to pdf high quality
-export_fig Comparison.pdf -q101;
+% Export plot with graceful fallback when export_fig is unavailable.
+if exist('export_fig', 'file') == 2
+    export_fig Comparison.pdf -q101;
+else
+    exportgraphics(gcf, 'Comparison.pdf', 'ContentType', 'vector');
+end
 

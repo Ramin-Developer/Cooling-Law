@@ -1,4 +1,12 @@
 function [timeNum, TempNum] = DiffSol(k, TempAmb, Temp0, tStart, tMax, N)
+%DIFFSOL Solve Newton's cooling ODE using a central-difference discretization.
+
+assert(isscalar(N) && N >= 2 && mod(N, 1) == 0, ...
+	'DiffSol:InvalidN', 'N must be an integer scalar >= 2.');
+assert(isscalar(k) && isfinite(k) && k > 0, ...
+	'DiffSol:InvalidK', 'k must be a positive finite scalar.');
+assert(isscalar(tStart) && isscalar(tMax) && isfinite(tStart) && isfinite(tMax) && tMax > tStart, ...
+	'DiffSol:InvalidTimeRange', 'Require finite scalars with tMax > tStart.');
 
 timeNum = linspace(tStart, tMax, N + 1)';
 h = timeNum(2) - timeNum(1);

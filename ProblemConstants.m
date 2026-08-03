@@ -1,4 +1,5 @@
 function [k, TempAmb, Temp0, tStart, tMax] = ProblemConstants
+%PROBLEMCONSTANTS Return default model parameters for cooling-law runs.
 
 % Constants of the problem
 k = 0.08;

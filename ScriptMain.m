@@ -1,3 +1,4 @@
+% SCRIPTMAIN Entry point for analytical vs numerical cooling-law comparison.
 
 % clc;
 clear;
@@ -11,7 +12,7 @@ N = 128;
 % Problem's analytical solution
 [TempExact, TempAsymp] = AnalyticalSol(k, TempAmb, Temp0);
 
-% Problem's numerical solution using sentral difference schema
+% Problem's numerical solution using central difference schema
 [timeDisc, TempNum] = DiffSol(k, TempAmb, Temp0, tStart, tMax, N);
 
 % Plot the results
