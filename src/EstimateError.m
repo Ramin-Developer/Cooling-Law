@@ -20,7 +20,5 @@ errVariance = sum((tempExactForComp(2:end) - tempNum(2:end)).^2) / (N - 1);
 error = sqrt(errVariance);
 
 if logical(showOutput)
-	sciFormat = '%10.5e';
-	errorStr = num2str(error, sciFormat);
-	fprintf('\nN =\t\t%d\nError =\t%s\n\n', N, errorStr);
+	fprintf('[EstimateError] N=%d, RMS=%.6e\n', N, error);
 end

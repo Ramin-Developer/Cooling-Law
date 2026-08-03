@@ -20,11 +20,11 @@ Target environment: MATLAB R2027a.
 - [x] Phase 3.1 MATLAB `matlab.unittest` test class under `tests/`.
 - [x] Phase 3.1 Test runner script `scripts/RunAllTests.m`.
 - [x] Phase 3.2 Minimum test set coverage including selected analytical points, convergence trend, error-estimator sanity, and regression snapshot.
+- [x] Phase 2.3 Logging and deterministic output contract hardening.
 
 ### In Progress
 - [x] Phase 1.1 Naming cleanup and comment typo cleanup across active source/scripts.
 - [x] Phase 1.3 Input validation in key routines (`N`, `k`, `tStart`, `tMax`).
-- [ ] Phase 2.3 Logging and deterministic output contract hardening.
 
 ### Pending
 - [ ] Phase 0.2 GitHub About metadata update.
