@@ -1,10 +1,19 @@
-function PresentData(tStart, tMax, timeDisc, TempEx, TempNum, TempAsymp)
+function PresentData(tStart, tMax, timeDisc, tempExactFn, tempNum, tempAsymFn)
 %PRESENTDATA Plot analytical/numerical results and export comparison figure.
+
+validateattributes(tStart, {'numeric'}, {'scalar', 'real', 'finite'}, mfilename, 'tStart');
+validateattributes(tMax, {'numeric'}, {'scalar', 'real', 'finite', '>', tStart}, mfilename, 'tMax');
+validateattributes(timeDisc, {'numeric'}, {'column', 'real', 'finite'}, mfilename, 'timeDisc');
+validateattributes(tempNum, {'numeric'}, {'column', 'real', 'finite', 'numel', numel(timeDisc)}, mfilename, 'tempNum');
+assert(isa(tempExactFn, 'function_handle'), 'PresentData:InvalidExactFunction', ...
+    'tempExactFn must be a function handle.');
+assert(isa(tempAsymFn, 'function_handle'), 'PresentData:InvalidAsymFunction', ...
+    'tempAsymFn must be a function handle.');
 
 noOfPlotPts = (tMax - tStart) * 2^6;
 t = linspace(tStart, tMax, noOfPlotPts)';
-TAsymp = TempAsymp(t);
-TempEx = TempEx(t);
+tempAsymVals = tempAsymFn(t);
+tempExactVals = tempExactFn(t);
 
 % Initializing a new figure
 hFig = figure();
@@ -15,12 +24,12 @@ plotSize = 32;
 markerSize = 24;
 
 % Plot the results;
-hPlot = plot(t, TempEx, 'magenta', timeDisc, TempNum, 'blue', ...
-    t, TAsymp, 'r--');
+hPlot = plot(t, tempExactVals, 'magenta', timeDisc, tempNum, 'blue', ...
+    t, tempAsymVals, 'r--');
 
 % Set legend
 hLegend = legend('$T\left(t \right)$', '$\bar{T} \left( t\right)$', ...
-    'Asymptotical Line');
+    'Asymptotic Line');
 set(hLegend, 'FontSize', plotSize, 'Interpreter', 'latex');
 
 % Set font of axes data

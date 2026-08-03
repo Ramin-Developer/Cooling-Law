@@ -1,11 +1,15 @@
 % SCRIPTMAIN Entry point for analytical vs numerical cooling-law comparison.
 
-% clc;
 clear;
 close all;
 
+scriptDir = fileparts(mfilename('fullpath'));
+projectRoot = fileparts(scriptDir);
+addpath(fullfile(projectRoot, 'src'));
+
 config = GetDefaultCoolingConfig();
+config.verbose = true;
 config.enablePlot = false;
 
 result = RunCoolingLaw(config);
-error = result.error;
+solverError = result.error;

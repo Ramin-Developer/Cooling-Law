@@ -8,5 +8,6 @@ config.tempInitial = 250;
 config.tStart = 0;
 config.tMax = 30;
 config.numIntervals = 128;
+config.verbose = false;
 config.enablePlot = false;
 config.plotFileName = 'Comparison.pdf';

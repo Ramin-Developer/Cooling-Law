@@ -4,7 +4,7 @@ classdef TestCoolingLaw < matlab.unittest.TestCase
             thisFile = mfilename('fullpath');
             testDir = fileparts(thisFile);
             projectRoot = fileparts(testDir);
-            addpath(projectRoot);
+            addpath(fullfile(projectRoot, 'src'));
         end
     end
 
