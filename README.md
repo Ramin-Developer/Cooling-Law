@@ -41,11 +41,14 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
   - CLI (Windows): `cmd /c scripts\RunAllTests.cmd`
 - Current test coverage includes:
   - analytical initial-condition consistency
+  - analytical selected time-point consistency
   - numerical output shape and boundary checks
   - cooling trend sanity check
   - orchestration API result contract (including summary fields)
   - summary final-value consistency checks
   - coarse-vs-fine convergence trend check
+  - error-estimator sanity check
+  - regression snapshot for default configuration
 
 ## Documentation
 
