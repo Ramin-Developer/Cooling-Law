@@ -22,6 +22,7 @@ Target environment: MATLAB R2027a.
 - [x] Phase 3.2 Minimum test set coverage including selected analytical points, convergence trend, error-estimator sanity, and regression snapshot.
 - [x] Phase 2.3 Logging and deterministic output contract hardening.
 - [x] Phase 3.3 GitHub Actions MATLAB workflow with test-result artifact upload.
+- [x] Phase 4 Performance profiling and optimization with benchmark guardrails.
 
 ### In Progress
 - [x] Phase 1.1 Naming cleanup and comment typo cleanup across active source/scripts.
@@ -29,7 +30,6 @@ Target environment: MATLAB R2027a.
 
 ### Pending
 - [ ] Phase 0.2 GitHub About metadata update.
-- [ ] Phase 4 Performance profiling and optimization.
 - [ ] Phase 5 LaTeX documentation integration and build workflow.
 
 ### Follow-up notes

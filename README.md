@@ -25,6 +25,7 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 - `src/GetDefaultCoolingConfig.m`: Centralized default run configuration.
 - `scripts/ScriptMain.m`: Main execution entry point.
 - `scripts/ScriptAnalyticalSol.m`: Analytical-only entry script.
+- `scripts/RunPerformanceBenchmark.m`: Runtime benchmark for solver scaling.
 - `src/ProblemConstants.m`: Physical/constants setup helper.
 - `src/AnalyticalSol.m`: Analytical model.
 - `src/DiffSol.m`: Numerical discretization and solve.
@@ -47,6 +48,14 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 ## Documentation (Planned)
 
 LaTeX documentation will be added under `docs/latex/source/`, aligned with your existing template approach.
+
+## Performance
+
+- Run benchmark from repository root:
+  - MATLAB command window: `run('scripts/RunPerformanceBenchmark.m')`
+  - CLI: `matlab -batch "run(''scripts/RunPerformanceBenchmark.m'')"`
+- To enforce threshold guardrails in CI/local checks, set environment variable:
+  - `COOLING_ENFORCE_PERF_THRESHOLDS=1`
 
 ## Notes
 
