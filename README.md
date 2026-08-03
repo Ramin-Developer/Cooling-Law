@@ -29,9 +29,15 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 - `docs/latex/source/`: Planned LaTeX source location.
 
 ## Testing and Validation (Planned)
-- Add MATLAB `matlab.unittest` test suite under `tests/`.
-- Add convergence and regression checks for numerical correctness.
-- Add CI execution for smoke tests and unit checks.
+- Run all tests from repository root:
+	- MATLAB command window: `RunAllTests`
+	- CLI: `matlab -batch "RunAllTests"`
+- Current test coverage includes:
+	- analytical initial-condition consistency
+	- numerical output shape and boundary checks
+	- cooling trend sanity check
+	- orchestration API result contract
+	- coarse-vs-fine convergence trend check
 
 ## Documentation (Planned)
 LaTeX documentation will be added under `docs/latex/source/`, aligned with your existing template approach.
