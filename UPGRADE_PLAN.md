@@ -19,12 +19,12 @@ Target environment: MATLAB R2027a.
 - [x] Phase 2.2 Centralized configuration with `GetDefaultCoolingConfig`.
 - [x] Phase 3.1 MATLAB `matlab.unittest` test class under `tests/`.
 - [x] Phase 3.1 Test runner script `scripts/RunAllTests.m`.
+- [x] Phase 3.2 Minimum test set coverage including selected analytical points, convergence trend, error-estimator sanity, and regression snapshot.
 
 ### In Progress
 - [x] Phase 1.1 Naming cleanup and comment typo cleanup across active source/scripts.
 - [x] Phase 1.3 Input validation in key routines (`N`, `k`, `tStart`, `tMax`).
 - [ ] Phase 2.3 Logging and deterministic output contract hardening.
-- [ ] Phase 3.2 Expand test suite to full minimum set and regression snapshot.
 
 ### Pending
 - [ ] Phase 0.2 GitHub About metadata update.
