@@ -5,6 +5,9 @@ This plan modernizes `Ramin-Developer/Cooling-Law` for readability, maintainabil
 
 Target environment: MATLAB R2017a.
 
+## Status
+All planned modernization phases and follow-up tasks in this document are complete.
+
 ## Progress Snapshot (2026-08-03)
 
 ### Completed
@@ -36,11 +39,10 @@ Target environment: MATLAB R2017a.
   - [x] Make `scripts/RunMatlabFiguresAndTests.cmd` resolve MATLAB executable from `MATLAB_EXE` or PATH.
 
 ### In Progress
-- [x] Phase 1.1 Naming cleanup and comment typo cleanup across active source/scripts.
-- [x] Phase 1.3 Input validation in key routines (`N`, `k`, `tStart`, `tMax`).
+- [x] None.
 
 ### Pending
-- [x] Phase 0.2 GitHub About metadata update.
+- [x] None.
 
 ### Follow-up notes
 - README synchronization pass completed for `src/` and `scripts/` paths.
