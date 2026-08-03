@@ -36,7 +36,7 @@ Target environment: MATLAB R2027a.
 - [x] Phase 1.3 Input validation in key routines (`N`, `k`, `tStart`, `tMax`).
 
 ### Pending
-- [ ] Phase 0.2 GitHub About metadata update.
+- [x] Phase 0.2 GitHub About metadata update.
 
 ### Follow-up notes
 - README synchronization pass completed for `src/` and `scripts/` paths.
