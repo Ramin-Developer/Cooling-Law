@@ -72,6 +72,8 @@ classdef TestCoolingLaw < matlab.unittest.TestCase
             testCase.verifyEqual(result.summary.timeStart, config.tStart, 'AbsTol', 1e-12);
             testCase.verifyEqual(result.summary.timeEnd, config.tMax, 'AbsTol', 1e-12);
             testCase.verifyEqual(result.summary.tempInitial, config.tempInitial, 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.summary.tempFinalNumerical, result.tempNum(end), 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.summary.tempFinalExact, result.tempExactFn(config.tMax), 'AbsTol', 1e-12);
             testCase.verifyEqual(result.summary.errorRms, result.error, 'AbsTol', 1e-12);
             testCase.verifyGreaterThanOrEqual(result.error, 0);
         end
