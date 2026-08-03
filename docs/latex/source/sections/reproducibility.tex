@@ -1,0 +1,27 @@
+Table~\ref{tab:repro-map} links each documented component to its
+implementation file.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+Topic & Source file(s) \\
+\midrule
+Model and exact solution & \texttt{src/AnalyticalSol.m} \\
+Numerical discretization & \texttt{src/DiffSol.m} \\
+Error metric & \texttt{src/EstimateError.m} \\
+Run orchestration & \texttt{src/RunCoolingLaw.m} \\
+Defaults/configuration & \texttt{src/GetDefaultCoolingConfig.m} \\
+Automated tests & \texttt{tests/TestCoolingLaw.m} \\
+Test runner & \texttt{scripts/RunAllTests.m} \\
+Performance benchmark & \texttt{scripts/RunPerformanceBenchmark.m} \\
+\bottomrule
+\end{tabular}
+\caption{Reproducibility map between report topics and source files.}
+\label{tab:repro-map}
+\end{table}
+
+To build this document from the repository root, run:
+\begin{verbatim}
+latexmk -pdf -output-directory=docs/latex/build docs/latex/source/main.tex
+\end{verbatim}

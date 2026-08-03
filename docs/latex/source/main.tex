@@ -1,0 +1,38 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+
+\title{Cooling-Law Solver Documentation}
+\author{Cooling-Law Project}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report presents a compact introduction to Newton's law of cooling and its
+numerical treatment in this repository. The intended audience is undergraduate
+students with a background in elementary calculus and introductory differential
+equations. We summarize the mathematical model, describe the implemented
+discretization, and explain how correctness and reproducibility are verified.
+\end{abstract}
+
+\tableofcontents
+
+\section{Mathematical Model}
+\input{docs/latex/source/sections/model}
+
+\section{Discretization}
+\input{docs/latex/source/sections/discretization}
+
+\section{Validation and Error Estimation}
+\input{docs/latex/source/sections/validation}
+
+\section{Reproducibility Map}
+\input{docs/latex/source/sections/reproducibility}
+
+\end{document}

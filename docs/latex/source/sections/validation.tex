@@ -1,0 +1,21 @@
+Validation is based on comparing the numerical trajectory to the analytical
+reference at the same time nodes. The implemented error indicator is an
+RMS-style metric in \texttt{src/EstimateError.m}:
+\[
+\mathrm{RMS}
+= \sqrt{\frac{1}{N-1}\sum_{i=1}^{N-1}\left(T(t_i)-\bar{T}_i\right)^2},
+\]
+where $T(t_i)$ denotes the exact value and $\bar{T}_i$ the numerical value.
+
+Automated tests are written with \texttt{matlab.unittest} in
+\texttt{tests/TestCoolingLaw.m}. The suite checks:
+\begin{itemize}
+\item exact-solution consistency at representative points,
+\item numerical output dimensions and boundary consistency,
+\item monotonic cooling behavior for default parameters,
+\item convergence trends under grid refinement,
+\item regression snapshots for reproducible default behavior.
+\end{itemize}
+
+Together, these checks provide both mathematical confidence and practical
+regression protection during refactoring.

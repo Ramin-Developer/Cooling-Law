@@ -1,0 +1,23 @@
+We model the temperature of an object by Newton's law of cooling,
+\[
+\frac{dT}{dt} = -k\,(T - T_{\infty}),
+\]
+where $T(t)$ is the object temperature, $T_{\infty}$ is the ambient
+temperature, and $k>0$ is the cooling coefficient.
+
+The initial condition is
+\[
+T(0)=T_0,
+\]
+which specifies the temperature at the beginning of the experiment.
+
+This first-order linear ordinary differential equation has the exact solution
+\[
+T(t) = T_{\infty} + (T_0 - T_{\infty})e^{-kt}.
+\]
+The formula shows that temperature approaches $T_{\infty}$ exponentially as
+time increases.
+
+In the codebase, this analytical solution is represented by function handles in
+\texttt{src/AnalyticalSol.m}. Those handles are used both for plotting and for
+error assessment of the numerical approximation.
