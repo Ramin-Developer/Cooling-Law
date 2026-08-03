@@ -34,7 +34,7 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 - `docs/latex/source/`: LaTeX report source.
 - `docs/latex/build/`: LaTeX build output directory.
 
-## Testing and Validation (Planned)
+## Testing and Validation
 
 - Run all tests from repository root:
   - MATLAB command window: `run('scripts/RunAllTests.m')`
@@ -68,4 +68,5 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 
 ## Notes
 
-This repository is being modernized incrementally with emphasis on readability, maintainability, performance, and reproducibility.
+Modernization tasks in `UPGRADE_PLAN.md` are complete; the repository now includes
+the upgraded structure, test workflow, performance benchmark, and LaTeX report pipeline.
