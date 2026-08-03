@@ -56,7 +56,8 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
   - `docs/latex/source/main.tex`
 - Generate/update report figures from MATLAB code:
   - MATLAB command window: `run('scripts/GenerateLatexFigures.m')`
-  - CLI (Windows): `cmd /c scripts\RunMatlabFiguresAndTests.cmd`
+  - CLI (Windows, figures only): `cmd /c scripts\RunGenerateLatexFigures.cmd`
+  - CLI (Windows, figures + tests): `cmd /c scripts\RunMatlabFiguresAndTests.cmd`
 - Build from repository root using `latexmk`:
   - `latexmk -pdf -output-directory=docs/latex/build docs/latex/source/main.tex`
 - Clean build artifacts:
