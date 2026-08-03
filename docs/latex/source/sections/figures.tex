@@ -1,0 +1,37 @@
+This section presents visual evidence complementing the analysis from
+Section~\ref{sec:discretization} and Section~\ref{sec:validation}.
+
+Figure~\ref{fig:discretization-nodes} shows the node placement on the
+uniform temporal mesh defined in Eq.~\eqref{eq:time-grid}. Increasing $N$
+reduces the spacing $h$, which provides more sample points for resolving the
+decay curve.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.90\textwidth]{docs/latex/source/figures/discretization_nodes.png}
+\caption{Uniform-grid node distributions for coarse and refined discretizations.}
+\label{fig:discretization-nodes}
+\end{figure}
+
+Figure~\ref{fig:trajectory-convergence} overlays numerical trajectories for
+increasing $N$ against the analytical solution from Eq.~\eqref{eq:exact-solution}.
+The curves visually confirm convergence under refinement.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.90\textwidth]{docs/latex/source/figures/trajectory_convergence.png}
+\caption{Numerical trajectories converging to the analytical solution as $N$ increases.}
+\label{fig:trajectory-convergence}
+\end{figure}
+
+Figure~\ref{fig:endpoint-convergence} reports endpoint behavior for multiple
+initial temperatures $T_0$. Each panel shows both endpoint approximation and
+absolute endpoint error versus $N$, demonstrating convergence by refinement for
+different initial states.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{docs/latex/source/figures/endpoint_convergence_by_initial.png}
+\caption{Endpoint convergence for multiple initial temperatures and grid sizes.}
+\label{fig:endpoint-convergence}
+\end{figure}

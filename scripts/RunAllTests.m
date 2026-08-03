@@ -22,5 +22,8 @@ xmlPlugin = matlab.unittest.plugins.XMLPlugin.producingJUnitFormat(xmlFile);
 runner.addPlugin(xmlPlugin);
 
 results = runner.run(suite);
-assertSuccess(results);
+numFailed = sum([results.Failed]);
+if numFailed > 0
+	error('RunAllTests:FailuresDetected', '%d MATLAB test(s) failed.', numFailed);
+end
 end

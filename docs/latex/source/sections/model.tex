@@ -1,23 +1,27 @@
-We model the temperature of an object by Newton's law of cooling,
-\[
-\frac{dT}{dt} = -k\,(T - T_{\infty}),
-\]
-where $T(t)$ is the object temperature, $T_{\infty}$ is the ambient
-temperature, and $k>0$ is the cooling coefficient.
+The governing ordinary differential equation is Newton's cooling law:
+\begin{equation}
+\frac{dT}{dt} = -k\left(T - T_{\infty}\right),
+\label{eq:newton-ode}
+\end{equation}
+where $T(t)$ is object temperature, $T_{\infty}$ is ambient temperature, and
+$k>0$ is the cooling coefficient.
 
 The initial condition is
-\[
+\begin{equation}
 T(0)=T_0,
-\]
-which specifies the temperature at the beginning of the experiment.
+\label{eq:initial-condition}
+\end{equation}
+which fixes the starting state of the system.
 
-This first-order linear ordinary differential equation has the exact solution
-\[
-T(t) = T_{\infty} + (T_0 - T_{\infty})e^{-kt}.
-\]
-The formula shows that temperature approaches $T_{\infty}$ exponentially as
-time increases.
+Solving Eq.~\eqref{eq:newton-ode} with Eq.~\eqref{eq:initial-condition} gives
+the exact temperature evolution:
+\begin{equation}
+T(t) = T_{\infty} + \left(T_0 - T_{\infty}\right)e^{-kt}.
+\label{eq:exact-solution}
+\end{equation}
 
-In the codebase, this analytical solution is represented by function handles in
-\texttt{src/AnalyticalSol.m}. Those handles are used both for plotting and for
-error assessment of the numerical approximation.
+Equation~\eqref{eq:exact-solution} shows exponential decay toward
+$T_{\infty}$. This expression is implemented in
+\texttt{src/AnalyticalSol.m} and is used as the reference solution for the
+error analysis in Section~\ref{sec:validation} and the convergence plots in
+Section~\ref{sec:figures}.
