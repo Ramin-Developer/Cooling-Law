@@ -34,7 +34,27 @@ if isfield(config, 'verbose')
     showOutput = logical(config.verbose);
 end
 
-err = EstimateError(config.numIntervals, timeDisc, tempExactFn, tempNum, showOutput);
+err = EstimateError(config.numIntervals, timeDisc, tempExactFn, tempNum, false);
+
+tempFinalExact = tempExactFn(config.tMax);
+tempFinalNum = tempNum(end);
+
+summary = struct();
+summary.numIntervals = config.numIntervals;
+summary.timeStart = config.tStart;
+summary.timeEnd = config.tMax;
+summary.tempInitial = config.tempInitial;
+summary.tempFinalNumerical = tempFinalNum;
+summary.tempFinalExact = tempFinalExact;
+summary.errorRms = err;
+
+if showOutput
+    fprintf(['[RunCoolingLaw] N=%d, t=[%.6f, %.6f], T0=%.6f, ' ...
+        'Tend_num=%.6f, Tend_exact=%.6f, RMS=%.6e\n'], ...
+        summary.numIntervals, summary.timeStart, summary.timeEnd, ...
+        summary.tempInitial, summary.tempFinalNumerical, ...
+        summary.tempFinalExact, summary.errorRms);
+end
 
 if isfield(config, 'enablePlot') && config.enablePlot
     PresentData(config.tStart, config.tMax, timeDisc, tempExactFn, tempNum, tempAsymFn);
@@ -47,3 +67,4 @@ result.tempExactFn = tempExactFn;
 result.tempAsymFn = tempAsymFn;
 result.error = err;
 result.config = config;
+result.summary = summary;
