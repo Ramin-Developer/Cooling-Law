@@ -7,7 +7,7 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 - Analytical solution of the cooling ODE.
 - Numerical solution using a finite-difference-style discretization.
 - Error estimation between numerical and analytical results.
-- Planned LaTeX documentation workflow for equations, derivations, and report output.
+- Integrated LaTeX documentation workflow for equations, derivations, and report output.
 
 ## Requirements
 
