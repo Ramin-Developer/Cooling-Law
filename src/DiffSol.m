@@ -14,12 +14,14 @@ h = timeNum(2) - timeNum(1);
 % Main, first upper and first lower diagonals
 mainDiag = 2*k*h * ones(N, 1);
 mainDiag(end) = 2*(1 + k*h);
-firstUpper = ones(N - 1, 1);
-firstLower = -ones(N - 1, 1);
+firstUpper = zeros(N, 1);
+firstUpper(1:N - 1) = 1;
+firstLower = zeros(N, 1);
+firstLower(2:N) = -1;
 firstLower(end) = -2;
 
-% Setup coefficient matrix
-A = diag(mainDiag, 0) + diag(firstUpper, 1) + diag(firstLower, -1);
+% Setup sparse tridiagonal coefficient matrix.
+A = spdiags([firstLower, mainDiag, firstUpper], [-1, 0, 1], N, N);
 
 % Setup right hand side
 b = 2*k*h*TempAmb * ones(N, 1);
