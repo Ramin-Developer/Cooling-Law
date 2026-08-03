@@ -43,7 +43,8 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
   - analytical initial-condition consistency
   - numerical output shape and boundary checks
   - cooling trend sanity check
-  - orchestration API result contract
+  - orchestration API result contract (including summary fields)
+  - summary final-value consistency checks
   - coarse-vs-fine convergence trend check
 
 ## Documentation
