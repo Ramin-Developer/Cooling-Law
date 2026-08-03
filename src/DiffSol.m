@@ -14,14 +14,20 @@ h = timeNum(2) - timeNum(1);
 % Main, first upper and first lower diagonals
 mainDiag = 2*k*h * ones(N, 1);
 mainDiag(end) = 2*(1 + k*h);
-firstUpper = zeros(N, 1);
-firstUpper(1:N - 1) = 1;
-firstLower = zeros(N, 1);
-firstLower(2:N) = -1;
-firstLower(end) = -2;
+upperDiag = ones(N - 1, 1);
+lowerDiag = -ones(N - 1, 1);
+lowerDiag(end) = -2;
 
-% Setup sparse tridiagonal coefficient matrix.
-A = spdiags([firstLower, mainDiag, firstUpper], [-1, 0, 1], N, N);
+% Setup sparse tridiagonal coefficient matrix using explicit triplets.
+mainI = (1:N)';
+upperI = (1:N - 1)';
+lowerI = (2:N)';
+
+rowIdx = [mainI; upperI; lowerI];
+colIdx = [mainI; upperI + 1; lowerI - 1];
+values = [mainDiag; upperDiag; lowerDiag];
+
+A = sparse(rowIdx, colIdx, values, N, N);
 
 % Setup right hand side
 b = 2*k*h*TempAmb * ones(N, 1);
