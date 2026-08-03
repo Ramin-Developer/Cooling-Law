@@ -24,6 +24,12 @@ Target environment: MATLAB R2027a.
 - [x] Phase 3.3 GitHub Actions MATLAB workflow with test-result artifact upload.
 - [x] Phase 4 Performance profiling and optimization with benchmark guardrails.
 - [x] Phase 5 LaTeX documentation integration and build workflow.
+- [x] Phase 5.4 Figure-rich report expansion:
+  - [x] Create modernization task branch and implementation plan update.
+  - [x] Modernize MATLAB figure-generation workflow for report assets.
+  - [x] Add discretization and convergence figures for multiple initial conditions and N values.
+  - [x] Number and cross-reference key equations and figures in LaTeX.
+  - [x] Rebuild PDF and verify references/figures.
 
 ### In Progress
 - [x] Phase 1.1 Naming cleanup and comment typo cleanup across active source/scripts.
