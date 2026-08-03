@@ -3,15 +3,14 @@
 clear;
 close all;
 
-% Problem constants of Newton's Law of Cooling
-[k, TempAmb, Temp0, tStart, tMax] = ProblemConstants;
+config = GetDefaultCoolingConfig();
 
 % Problem's analytical solution
-[TempExact, TempAsymp] = AnalyticalSol(k, TempAmb, Temp0);
+[TempExact, TempAsymp] = AnalyticalSol(config.k, config.tempAmbient, config.tempInitial);
 
 % Build a dense time grid for analytical inspection.
 numPoints = 256;
-t = linspace(tStart, tMax, numPoints)';
+t = linspace(config.tStart, config.tMax, numPoints)';
 tempExactVals = TempExact(t);
 tempAsympVals = TempAsymp(t);
 

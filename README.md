@@ -17,6 +17,8 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 3. Optionally run `ScriptAnalyticalSol.m` for analytical-only flow.
 
 ## Repository Layout
+- `RunCoolingLaw.m`: Orchestration API for analytical + numerical execution.
+- `GetDefaultCoolingConfig.m`: Centralized default run configuration.
 - `ScriptMain.m`: Main execution entry point.
 - `ScriptAnalyticalSol.m`: Analytical-solution-only script.
 - `ProblemConstants.m`: Physical/constants setup.
