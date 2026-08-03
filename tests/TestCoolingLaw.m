@@ -54,10 +54,25 @@ classdef TestCoolingLaw < matlab.unittest.TestCase
             result = RunCoolingLaw(config);
 
             testCase.verifyTrue(isstruct(result));
-            expectedFields = {'timeDisc', 'tempNum', 'tempExactFn', 'tempAsymFn', 'error', 'config'};
+            expectedFields = {'timeDisc', 'tempNum', 'tempExactFn', 'tempAsymFn', 'error', 'config', 'summary'};
             for i = 1:numel(expectedFields)
                 testCase.verifyTrue(isfield(result, expectedFields{i}));
             end
+
+            testCase.verifyTrue(isstruct(result.summary));
+            expectedSummaryFields = {
+                'numIntervals', 'timeStart', 'timeEnd', 'tempInitial', ...
+                'tempFinalNumerical', 'tempFinalExact', 'errorRms'
+            };
+            for i = 1:numel(expectedSummaryFields)
+                testCase.verifyTrue(isfield(result.summary, expectedSummaryFields{i}));
+            end
+
+            testCase.verifyEqual(result.summary.numIntervals, config.numIntervals);
+            testCase.verifyEqual(result.summary.timeStart, config.tStart, 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.summary.timeEnd, config.tMax, 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.summary.tempInitial, config.tempInitial, 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.summary.errorRms, result.error, 'AbsTol', 1e-12);
             testCase.verifyGreaterThanOrEqual(result.error, 0);
         end
 
