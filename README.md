@@ -11,7 +11,7 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 
 ## Requirements
 
-- MATLAB R2027a.
+- MATLAB (validated in this repository with R2017a command-line workflow; newer versions supported).
 
 ## Quick Start
 
@@ -38,7 +38,7 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 
 - Run all tests from repository root:
   - MATLAB command window: `run('scripts/RunAllTests.m')`
-  - CLI: `matlab -batch "run(''scripts/RunAllTests.m'')"`
+  - CLI (Windows): `cmd /c scripts\RunAllTests.cmd`
 - Current test coverage includes:
   - analytical initial-condition consistency
   - numerical output shape and boundary checks
@@ -62,7 +62,7 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 
 - Run benchmark from repository root:
   - MATLAB command window: `run('scripts/RunPerformanceBenchmark.m')`
-  - CLI: `matlab -batch "run(''scripts/RunPerformanceBenchmark.m'')"`
+  - CLI (Windows): `cmd /c scripts\RunPerformanceBenchmark.cmd`
 - To enforce threshold guardrails in CI/local checks, set environment variable:
   - `COOLING_ENFORCE_PERF_THRESHOLDS=1`
 
