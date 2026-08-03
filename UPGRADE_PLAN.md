@@ -3,7 +3,7 @@
 ## Scope
 This plan modernizes `Ramin-Developer/Cooling-Law` for readability, maintainability, performance, and testing, while preserving solver behavior.
 
-Target environment: MATLAB R2027a.
+Target environment: MATLAB R2017a.
 
 ## Progress Snapshot (2026-08-03)
 
@@ -51,7 +51,7 @@ Target environment: MATLAB R2027a.
 ### 0.1 README refresh
 - Replace current short README with:
   - project purpose (analytical + numerical Newton cooling solver)
-  - MATLAB version target (R2027a)
+  - MATLAB version target (R2017a)
   - quick start (`ScriptMain.m`)
   - repository structure overview (`src`, `tests`, `docs`)
   - validation/testing commands
@@ -107,7 +107,7 @@ Create one public orchestration function, e.g.:
 - Standardize numeric formatting and output messaging.
 - Return deterministic outputs for tests (no hidden global state).
 
-## Phase 3 - Testing strategy (MATLAB R2027a)
+## Phase 3 - Testing strategy (MATLAB R2017a)
 
 ### 3.1 Test harness
 - Use `matlab.unittest` test classes under `tests/`.
@@ -162,7 +162,7 @@ Create one public orchestration function, e.g.:
 6. LaTeX docs integration and publication-ready report.
 
 ## Acceptance criteria
-- Clear README with R2027a run/test instructions.
+- Clear README with R2017a run/test instructions.
 - About metadata completed on GitHub.
 - `.gitignore` supports both MATLAB and LaTeX workflows.
 - Tests pass locally and in CI.

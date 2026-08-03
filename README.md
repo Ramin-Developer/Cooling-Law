@@ -11,7 +11,7 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 
 ## Requirements
 
-- MATLAB (validated in this repository with R2017a command-line workflow; newer versions supported).
+- MATLAB R2017a.
 
 ## Quick Start
 
