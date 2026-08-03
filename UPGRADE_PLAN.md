@@ -11,7 +11,7 @@ All planned modernization phases and follow-up tasks in this document are comple
 ## Progress Snapshot (2026-08-03)
 
 ### Completed
-- [x] Phase 0.1 README refresh (initial pass complete; see follow-up note below).
+- [x] Phase 0.1 README refresh.
 - [x] Phase 0.3 `.gitignore` for MATLAB + LaTeX artifacts.
 - [x] Phase 1.2 Folder layout introduced:
   - [x] Solver code moved to `src/`
@@ -51,8 +51,7 @@ All planned modernization phases and follow-up tasks in this document are comple
 - [x] None.
 
 ### Follow-up notes
-- README synchronization pass completed for `src/` and `scripts/` paths.
-- Remaining naming cleanup is mostly cosmetic consistency across variable names and comments.
+- Final documentation and plan synchronization completed.
 
 ## Phase 0 - Foundation (Start Here)
 
