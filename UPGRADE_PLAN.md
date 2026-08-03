@@ -30,6 +30,10 @@ Target environment: MATLAB R2027a.
   - [x] Add discretization and convergence figures for multiple initial conditions and N values.
   - [x] Number and cross-reference key equations and figures in LaTeX.
   - [x] Rebuild PDF and verify references/figures.
+- [x] Phase 6.1 MATLAB CLI compatibility hardening:
+  - [x] Replace version-specific command examples in README with portable `.cmd` workflows.
+  - [x] Add `scripts/RunAllTests.cmd` and `scripts/RunPerformanceBenchmark.cmd` wrappers.
+  - [x] Make `scripts/RunMatlabFiguresAndTests.cmd` resolve MATLAB executable from `MATLAB_EXE` or PATH.
 
 ### In Progress
 - [x] Phase 1.1 Naming cleanup and comment typo cleanup across active source/scripts.
