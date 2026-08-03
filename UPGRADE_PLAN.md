@@ -45,6 +45,8 @@ All planned modernization phases and follow-up tasks in this document are comple
   - [x] Remove stale "planned" wording and align README test-coverage bullets with implemented tests.
 - [x] Phase 6.5 README coverage completeness sync:
   - [x] Add missing README bullets for selected analytical points, estimator sanity, and regression snapshot coverage.
+- [x] Phase 6.6 MATLAB launch minimization for docs flow:
+  - [x] Add `scripts/RunGenerateLatexFigures.cmd` to regenerate figures without running tests.
 
 ### In Progress
 - [x] None.
