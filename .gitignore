@@ -1,0 +1,38 @@
+# MATLAB
+*.asv
+*.m~
+*.mlx.autosave
+slprj/
+codegen/
+*.mex*
+*.p
+
+# MATLAB cache/temp
+*.autosave
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# VS Code logs
+.vscode/*.log
