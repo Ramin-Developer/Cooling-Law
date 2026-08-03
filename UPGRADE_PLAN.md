@@ -43,6 +43,8 @@ All planned modernization phases and follow-up tasks in this document are comple
   - [x] Add summary-field and summary final-value consistency assertions in `tests/TestCoolingLaw.m`.
 - [x] Phase 6.4 Documentation completion polish:
   - [x] Remove stale "planned" wording and align README test-coverage bullets with implemented tests.
+- [x] Phase 6.5 README coverage completeness sync:
+  - [x] Add missing README bullets for selected analytical points, estimator sanity, and regression snapshot coverage.
 
 ### In Progress
 - [x] None.
