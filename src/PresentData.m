@@ -53,7 +53,9 @@ grid;
 % Export plot with graceful fallback when export_fig is unavailable.
 if exist('export_fig', 'file') == 2
     export_fig Comparison.pdf -q101;
-else
+elseif exist('exportgraphics', 'file') == 2
     exportgraphics(gcf, 'Comparison.pdf', 'ContentType', 'vector');
+else
+    print(gcf, 'Comparison.pdf', '-dpdf');
 end
 
