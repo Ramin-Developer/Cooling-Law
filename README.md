@@ -3,44 +3,51 @@
 Newton's Cooling Law solver implemented in MATLAB, with both analytical and numerical solutions and comparison support.
 
 ## Highlights
+
 - Analytical solution of the cooling ODE.
 - Numerical solution using a finite-difference-style discretization.
 - Error estimation between numerical and analytical results.
 - Planned LaTeX documentation workflow for equations, derivations, and report output.
 
 ## Requirements
+
 - MATLAB R2027a.
 
 ## Quick Start
+
 1. Open MATLAB in this repository root.
-2. Run `ScriptMain.m`.
-3. Optionally run `ScriptAnalyticalSol.m` for analytical-only flow.
+2. Run `run('scripts/ScriptMain.m')`.
+3. Optionally run `run('scripts/ScriptAnalyticalSol.m')` for analytical-only flow.
 
 ## Repository Layout
-- `RunCoolingLaw.m`: Orchestration API for analytical + numerical execution.
-- `GetDefaultCoolingConfig.m`: Centralized default run configuration.
-- `ScriptMain.m`: Main execution entry point.
-- `ScriptAnalyticalSol.m`: Analytical-solution-only script.
-- `ProblemConstants.m`: Physical/constants setup.
-- `AnalyticalSol.m`: Analytical model.
-- `DiffSol.m`: Numerical discretization and solve.
-- `EstimateError.m`: Error computation.
-- `PresentData.m`: Plotting/presentation utilities.
+
+- `src/RunCoolingLaw.m`: Orchestration API for analytical + numerical execution.
+- `src/GetDefaultCoolingConfig.m`: Centralized default run configuration.
+- `scripts/ScriptMain.m`: Main execution entry point.
+- `scripts/ScriptAnalyticalSol.m`: Analytical-only entry script.
+- `src/ProblemConstants.m`: Physical/constants setup helper.
+- `src/AnalyticalSol.m`: Analytical model.
+- `src/DiffSol.m`: Numerical discretization and solve.
+- `src/EstimateError.m`: Error computation.
+- `src/PresentData.m`: Plotting/presentation utilities.
 - `docs/latex/source/`: Planned LaTeX source location.
 
 ## Testing and Validation (Planned)
+
 - Run all tests from repository root:
-	- MATLAB command window: `RunAllTests`
-	- CLI: `matlab -batch "RunAllTests"`
+  - MATLAB command window: `run('scripts/RunAllTests.m')`
+  - CLI: `matlab -batch "run(''scripts/RunAllTests.m'')"`
 - Current test coverage includes:
-	- analytical initial-condition consistency
-	- numerical output shape and boundary checks
-	- cooling trend sanity check
-	- orchestration API result contract
-	- coarse-vs-fine convergence trend check
+  - analytical initial-condition consistency
+  - numerical output shape and boundary checks
+  - cooling trend sanity check
+  - orchestration API result contract
+  - coarse-vs-fine convergence trend check
 
 ## Documentation (Planned)
+
 LaTeX documentation will be added under `docs/latex/source/`, aligned with your existing template approach.
 
 ## Notes
+
 This repository is being modernized incrementally with emphasis on readability, maintainability, performance, and reproducibility.

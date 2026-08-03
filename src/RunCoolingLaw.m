@@ -28,7 +28,13 @@ validateattributes(config.numIntervals, {'numeric'}, {'scalar', 'real', 'finite'
 [timeDisc, tempNum] = DiffSol( ...
     config.k, config.tempAmbient, config.tempInitial, ...
     config.tStart, config.tMax, config.numIntervals);
-err = EstimateError(config.numIntervals, timeDisc, tempExactFn, tempNum);
+
+showOutput = false;
+if isfield(config, 'verbose')
+    showOutput = logical(config.verbose);
+end
+
+err = EstimateError(config.numIntervals, timeDisc, tempExactFn, tempNum, showOutput);
 
 if isfield(config, 'enablePlot') && config.enablePlot
     PresentData(config.tStart, config.tMax, timeDisc, tempExactFn, tempNum, tempAsymFn);
