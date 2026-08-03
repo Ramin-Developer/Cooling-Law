@@ -1,0 +1,22 @@
+The numerical solver in \texttt{src/DiffSol.m} approximates the model on a
+uniform grid in time,
+\[
+t_i = t_{\min} + i h, \qquad i=0,1,\ldots,N, \qquad
+h = \frac{t_{\max}-t_{\min}}{N}.
+\]
+
+After discretization, the unknown temperatures satisfy a tridiagonal linear
+system. Tridiagonal systems are computationally efficient because each row has
+only a small number of nonzero entries.
+
+In this implementation, the coefficient matrix is assembled in sparse form and
+solved with MATLAB's backslash operator. This combination is reliable and
+efficient for the problem sizes considered in this project.
+
+The routine returns:
+\begin{itemize}
+\item \texttt{timeNum}: the grid values $t_i$,
+\item \texttt{TempNum}: the numerical temperature vector.
+\end{itemize}
+The first numerical value is fixed by the initial condition,
+\texttt{TempNum(1)=T0}.

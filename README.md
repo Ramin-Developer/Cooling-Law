@@ -31,7 +31,8 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
 - `src/DiffSol.m`: Numerical discretization and solve.
 - `src/EstimateError.m`: Error computation.
 - `src/PresentData.m`: Plotting/presentation utilities.
-- `docs/latex/source/`: Planned LaTeX source location.
+- `docs/latex/source/`: LaTeX report source.
+- `docs/latex/build/`: LaTeX build output directory.
 
 ## Testing and Validation (Planned)
 
@@ -45,9 +46,14 @@ Newton's Cooling Law solver implemented in MATLAB, with both analytical and nume
   - orchestration API result contract
   - coarse-vs-fine convergence trend check
 
-## Documentation (Planned)
+## Documentation
 
-LaTeX documentation will be added under `docs/latex/source/`, aligned with your existing template approach.
+- Main report entry file:
+  - `docs/latex/source/main.tex`
+- Build from repository root using `latexmk`:
+  - `latexmk -pdf -output-directory=docs/latex/build docs/latex/source/main.tex`
+- Clean build artifacts:
+  - `latexmk -c -output-directory=docs/latex/build docs/latex/source/main.tex`
 
 ## Performance
 
