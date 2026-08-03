@@ -37,6 +37,12 @@ All planned modernization phases and follow-up tasks in this document are comple
   - [x] Replace version-specific command examples in README with portable `.cmd` workflows.
   - [x] Add `scripts/RunAllTests.cmd` and `scripts/RunPerformanceBenchmark.cmd` wrappers.
   - [x] Make `scripts/RunMatlabFiguresAndTests.cmd` resolve MATLAB executable from `MATLAB_EXE` or PATH.
+- [x] Phase 6.2 R2017a plotting export compatibility:
+  - [x] Add `print(..., '-dpdf')` fallback in `src/PresentData.m` when `exportgraphics` is unavailable.
+- [x] Phase 6.3 RunCoolingLaw summary contract hardening:
+  - [x] Add summary-field and summary final-value consistency assertions in `tests/TestCoolingLaw.m`.
+- [x] Phase 6.4 Documentation completion polish:
+  - [x] Remove stale "planned" wording and align README test-coverage bullets with implemented tests.
 
 ### In Progress
 - [x] None.
