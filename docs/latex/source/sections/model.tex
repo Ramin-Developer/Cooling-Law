@@ -3,25 +3,26 @@ The governing ordinary differential equation is Newton's cooling law:
 \frac{dT}{dt} = -k\left(T - T_{\infty}\right),
 \label{eq:newton-ode}
 \end{equation}
-where $T(t)$ is object temperature, $T_{\infty}$ is ambient temperature, and
+where $T(t)$ is the object temperature, $T_{\infty}$ is the ambient temperature, and
 $k>0$ is the cooling coefficient.
 
 The initial condition is
-\begin{equation}
-T(0)=T_0,
-\label{eq:initial-condition}
-\end{equation}
+\begin{subequations}\label{eq:initial-condition-set}
+\begin{align}
+T(0) &= T_0, \label{eq:initial-condition}
+\end{align}
+\end{subequations}
 which fixes the starting state of the system.
 
-Solving Eq.~\eqref{eq:newton-ode} with Eq.~\eqref{eq:initial-condition} gives
+Solving \Cref{eq:newton-ode} together with \Cref{eq:initial-condition} gives
 the exact temperature evolution:
 \begin{equation}
 T(t) = T_{\infty} + \left(T_0 - T_{\infty}\right)e^{-kt}.
 \label{eq:exact-solution}
 \end{equation}
 
-Equation~\eqref{eq:exact-solution} shows exponential decay toward
+\Cref{eq:exact-solution} shows exponential decay toward
 $T_{\infty}$. This expression is implemented in
 \texttt{src/AnalyticalSol.m} and is used as the reference solution for the
-error analysis in Section~\ref{sec:validation} and the convergence plots in
-Section~\ref{sec:figures}.
+error analysis in \Cref{sec:validation} and the convergence plots in
+\Cref{sec:figures}.

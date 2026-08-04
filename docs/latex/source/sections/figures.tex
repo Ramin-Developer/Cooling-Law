@@ -1,37 +1,38 @@
-This section presents visual evidence complementing the analysis from
-Section~\ref{sec:discretization} and Section~\ref{sec:validation}.
+This section presents visual evidence that complements the analysis from
+\Cref{sec:discretization} and \Cref{sec:validation}.
 
-Figure~\ref{fig:discretization-nodes} shows the node placement on the
-uniform temporal mesh defined in Eq.~\eqref{eq:time-grid}. Increasing $N$
+\Cref{fig:discretization-nodes} shows the node placement on the
+uniform temporal mesh defined in \Cref{eq:time-grid}. Increasing $N$
 reduces the spacing $h$, which provides more sample points for resolving the
-decay curve.
+decay curve. The axes in the figure are labelled in italic font to improve
+readability.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.90\textwidth]{docs/latex/source/figures/discretization_nodes.png}
+\includegraphics[width=0.90\textwidth]{discretization_nodes.png}
 \caption{Uniform-grid node distributions for coarse and refined discretizations.}
 \label{fig:discretization-nodes}
 \end{figure}
 
-Figure~\ref{fig:trajectory-convergence} overlays numerical trajectories for
-increasing $N$ against the analytical solution from Eq.~\eqref{eq:exact-solution}.
+\Cref{fig:trajectory-convergence} overlays numerical trajectories for
+increasing $N$ against the analytical solution from \Cref{eq:exact-solution}.
 The curves visually confirm convergence under refinement.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.90\textwidth]{docs/latex/source/figures/trajectory_convergence.png}
+\includegraphics[width=0.90\textwidth]{trajectory_convergence.png}
 \caption{Numerical trajectories converging to the analytical solution as $N$ increases.}
 \label{fig:trajectory-convergence}
 \end{figure}
 
-Figure~\ref{fig:endpoint-convergence} reports endpoint behavior for multiple
+\Cref{fig:endpoint-convergence} reports endpoint behavior for multiple
 initial temperatures $T_0$. Each panel shows both endpoint approximation and
 absolute endpoint error versus $N$, demonstrating convergence by refinement for
 different initial states.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.92\textwidth]{docs/latex/source/figures/endpoint_convergence_by_initial.png}
+\includegraphics[width=0.92\textwidth]{endpoint_convergence_by_initial.png}
 \caption{Endpoint convergence for multiple initial temperatures and grid sizes.}
 \label{fig:endpoint-convergence}
 \end{figure}

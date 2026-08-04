@@ -1,10 +1,27 @@
 \documentclass[11pt]{article}
 
 \usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{subcaption}
 \usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+\graphicspath{{docs/latex/source/figures/}}
+
+\crefname{section}{Section}{Sections}
+\crefname{equation}{Equation}{Equations}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
 
 \title{Cooling-Law Solver Documentation}
 \author{Cooling-Law Project}
@@ -13,15 +30,18 @@
 \begin{document}
 \maketitle
 
+\clearpage
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
 \begin{abstract}
-This report presents a compact introduction to Newton's law of cooling and its
-numerical treatment in this repository. The intended audience is undergraduate
+This report provides a concise overview of Newton's law of cooling and its
+numerical treatment in this repository. It is intended for undergraduate
 students with a background in elementary calculus and introductory differential
 equations. We summarize the mathematical model, describe the implemented
-discretization, and explain how correctness and reproducibility are verified.
+discretization, and explain how correctness and reproducibility are assessed.
 \end{abstract}
-
-\tableofcontents
 
 \section{Mathematical Model}
 \label{sec:model}
@@ -35,9 +55,27 @@ discretization, and explain how correctness and reproducibility are verified.
 \label{sec:validation}
 \input{docs/latex/source/sections/validation}
 
-\section{Numerical Figures}
+\section{Numerical Illustrations}
 \label{sec:figures}
 \input{docs/latex/source/sections/figures}
+
+\section{Convergence Analysis and Order}
+\label{sec:convergence}
+Let $e_i := \bar{T}_i - T(t_i)$ denote the error at the $i$th time node. The
+continuous model in \Cref{eq:newton-ode} is smooth for all $t$, so the exact
+solution is well behaved and the discrete system in \Cref{eq:linear-system-set}
+can be compared directly with the exact temperature values at the same nodes.
+The local truncation error is created by replacing the continuous derivative by
+its discrete counterpart, and the resulting residual tends to zero as the step
+size $h$ becomes smaller. Because the coefficient matrix is nonsingular for every
+positive $h$, the discrete solution is stable, and consistency therefore implies
+convergence as $h \to 0$.
+
+In practice, this means that refining the grid by increasing $N$ should reduce
+the RMS error reported in \Cref{sec:validation}. The numerical results in this
+report are consistent with a first-order reduction in the global error as the
+mesh is refined, although the precise observed rate depends on the chosen
+initial conditions and the final time horizon.
 
 \section{Reproducibility Map}
 \label{sec:reproducibility}

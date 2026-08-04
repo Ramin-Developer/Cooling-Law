@@ -5,7 +5,7 @@ h = \frac{t_{\max}-t_{\min}}{N}.
 \label{eq:time-grid}
 \end{equation}
 
-As visualized in Figure~\ref{fig:discretization-nodes}, increasing $N$ reduces
+As illustrated in \Cref{fig:discretization-nodes}, increasing $N$ reduces
 $h$ and provides a finer temporal representation.
 
 The discrete unknown vector is
@@ -13,13 +13,27 @@ The discrete unknown vector is
 \mathbf{u} = [\bar{T}_1,\bar{T}_2,\ldots,\bar{T}_N]^\top,
 \label{eq:discrete-unknown}
 \end{equation}
-where $\bar{T}_0=T_0$ is prescribed by Eq.~\eqref{eq:initial-condition}.
+where $\bar{T}_0=T_0$ is prescribed by \Cref{eq:initial-condition}.
 
 The implemented algebraic system has the tridiagonal form
-\begin{equation}
-\mathbf{A}\mathbf{u}=\mathbf{b},
-\label{eq:linear-system}
-\end{equation}
+\begin{subequations}\label{eq:linear-system-set}
+\begin{align}
+\mathbf{A}\mathbf{u} &= \mathbf{b}, \label{eq:linear-system} \\
+\mathbf{A} &:= \begin{bmatrix}
+2kh & 1 & 0 & \cdots & 0 \\
+-1 & 2kh & 1 & \ddots & \vdots \\
+0 & -1 & 2kh & \ddots & 0 \\
+\vdots & \ddots & \ddots & \ddots & 1 \\
+0 & \cdots & 0 & -2 & 2(1+kh)
+\end{bmatrix}, \label{eq:matrix-A} \\
+\mathbf{b} &:= \begin{bmatrix}
+2kh\,T_{\infty}+T_0 \\
+2kh\,T_{\infty} \\
+\vdots \\
+2kh\,T_{\infty}
+\end{bmatrix}. \label{eq:vector-b}
+\end{align}
+\end{subequations}
 with row equations
 \begin{align}
 2kh\,\bar{T}_1 + \bar{T}_2 &= 2kh\,T_{\infty}+T_0, \label{eq:first-row} \\
@@ -27,7 +41,7 @@ with row equations
 -2\bar{T}_{N-1}+2(1+kh)\bar{T}_N &= 2kh\,T_{\infty}. \label{eq:last-row}
 \end{align}
 
-The sparse triplet assembly of Eq.~\eqref{eq:linear-system} keeps memory usage
+The sparse triplet assembly of \Cref{eq:linear-system} keeps memory usage
 low while preserving deterministic behavior. The resulting temperatures are
 stored in \texttt{TempNum = [T0; u]}, matching the boundary condition exactly
 at the first grid point.
