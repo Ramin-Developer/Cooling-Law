@@ -1,6 +1,7 @@
 classdef TestCoolingLaw < matlab.unittest.TestCase
     methods (TestMethodSetup)
         function addProjectRootToPath(~)
+            % Ensure the solver source directory is available to every test case.
             thisFile = mfilename('fullpath');
             testDir = fileparts(thisFile);
             projectRoot = fileparts(testDir);
@@ -102,6 +103,40 @@ classdef TestCoolingLaw < matlab.unittest.TestCase
 
             testCase.verifyEqual(perfectError, 0, 'AbsTol', 1e-12);
             testCase.verifyGreaterThan(actualError, 0);
+        end
+
+        function partialConfigUsesDefaults(testCase)
+            % Regression check: a partial config should inherit the remaining defaults.
+            config = struct('k', 0.08, 'numIntervals', 64);
+            result = RunCoolingLaw(config);
+            defaultConfig = GetDefaultCoolingConfig();
+
+            testCase.verifyEqual(result.config.tempAmbient, defaultConfig.tempAmbient, 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.config.tempInitial, defaultConfig.tempInitial, 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.config.tStart, defaultConfig.tStart, 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.config.tMax, defaultConfig.tMax, 'AbsTol', 1e-12);
+            testCase.verifyEqual(result.config.verbose, defaultConfig.verbose);
+            testCase.verifyEqual(result.config.enablePlot, defaultConfig.enablePlot);
+            testCase.verifyEqual(result.summary.numIntervals, config.numIntervals);
+        end
+
+        function presentationUsesConfiguredOutputPath(testCase)
+            % Regression check: plotting should honor an explicit export path.
+            config = GetDefaultCoolingConfig();
+            [timeDisc, tempNum] = DiffSol( ...
+                config.k, config.tempAmbient, config.tempInitial, ...
+                config.tStart, config.tMax, config.numIntervals);
+            [tempExactFn, tempAsymFn] = AnalyticalSol(config.k, config.tempAmbient, config.tempInitial);
+
+            outputPath = fullfile(tempdir, 'cooling-law-export-test.pdf');
+            if exist(outputPath, 'file') == 2
+                delete(outputPath);
+            end
+
+            PresentData(config.tStart, config.tMax, timeDisc, tempExactFn, tempNum, tempAsymFn, outputPath);
+
+            testCase.verifyTrue(exist(outputPath, 'file') == 2);
+            delete(outputPath);
         end
 
         function regressionSnapshotDefaultConfig(testCase)

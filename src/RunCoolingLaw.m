@@ -8,7 +8,11 @@ function result = RunCoolingLaw(config)
 % - config
 
 if nargin == 0 || isempty(config)
+    % Use the default configuration when no explicit settings are provided.
     config = GetDefaultCoolingConfig();
+else
+    % Merge caller overrides onto defaults so partial configs still work.
+    config = mergeConfig(config, GetDefaultCoolingConfig());
 end
 
 validateattributes(config.k, {'numeric'}, {'scalar', 'real', 'finite', 'positive'}, ...
@@ -29,16 +33,14 @@ validateattributes(config.numIntervals, {'numeric'}, {'scalar', 'real', 'finite'
     config.k, config.tempAmbient, config.tempInitial, ...
     config.tStart, config.tMax, config.numIntervals);
 
-showOutput = false;
-if isfield(config, 'verbose')
-    showOutput = logical(config.verbose);
-end
-
+showOutput = isfield(config, 'verbose') && logical(config.verbose);
+% Compute the RMS error against the analytical solution for the current discretization.
 err = EstimateError(config.numIntervals, timeDisc, tempExactFn, tempNum, false);
 
 tempFinalExact = tempExactFn(config.tMax);
 tempFinalNum = tempNum(end);
 
+% Keep summary values in a structured form so callers can rely on a stable contract.
 summary = struct();
 summary.numIntervals = config.numIntervals;
 summary.timeStart = config.tStart;
@@ -68,3 +70,15 @@ result.tempAsymFn = tempAsymFn;
 result.error = err;
 result.config = config;
 result.summary = summary;
+end
+
+function merged = mergeConfig(userConfig, defaultConfig)
+merged = defaultConfig;
+fieldNames = fieldnames(userConfig);
+for i = 1:numel(fieldNames)
+    fieldName = fieldNames{i};
+    if isfield(defaultConfig, fieldName)
+        merged.(fieldName) = userConfig.(fieldName);
+    end
+end
+end
