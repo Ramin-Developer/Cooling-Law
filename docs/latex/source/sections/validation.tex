@@ -1,13 +1,15 @@
-Validation is based on comparing the numerical trajectory to the analytical
-reference at the same time nodes. The implemented error indicator is an
-RMS-style metric in \texttt{src/EstimateError.m}:
+Validation compares the numerical trajectory with the analytical reference at
+the same time nodes. The implemented error indicator is an RMS-style metric in
+\texttt{src/EstimateError.m}; here, RMS stands for root mean square and measures
+the typical size of the pointwise deviation between the exact and numerical
+solutions.
 \begin{equation}
 \mathrm{RMS}
 = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N-1}\left(T(t_i)-\bar{T}_i\right)^2},
 \label{eq:rms-error}
 \end{equation}
 where $T(t_i)$ denotes the exact value and $\bar{T}_i$ the numerical value.
-Equation~\eqref{eq:rms-error} is reported by \texttt{RunCoolingLaw} and used
+\Cref{eq:rms-error} is reported by \texttt{RunCoolingLaw} and used
 for refinement checks.
 
 Automated tests are written with \texttt{matlab.unittest} in
@@ -22,5 +24,5 @@ Automated tests are written with \texttt{matlab.unittest} in
 
 Together, these checks provide both mathematical confidence and practical
 regression protection during refactoring. The visual convergence evidence in
-Figure~\ref{fig:trajectory-convergence} and
-Figure~\ref{fig:endpoint-convergence} complements these automated checks.
+\Cref{fig:trajectory-convergence} and \Cref{fig:endpoint-convergence}
+complements the automated checks.
