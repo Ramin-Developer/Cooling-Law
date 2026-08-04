@@ -1,6 +1,7 @@
 classdef TestCoolingLaw < matlab.unittest.TestCase
     methods (TestMethodSetup)
         function addProjectRootToPath(~)
+            % Ensure the solver source directory is available to every test case.
             thisFile = mfilename('fullpath');
             testDir = fileparts(thisFile);
             projectRoot = fileparts(testDir);
@@ -105,6 +106,7 @@ classdef TestCoolingLaw < matlab.unittest.TestCase
         end
 
         function partialConfigUsesDefaults(testCase)
+            % Regression check: a partial config should inherit the remaining defaults.
             config = struct('k', 0.08, 'numIntervals', 64);
             result = RunCoolingLaw(config);
             defaultConfig = GetDefaultCoolingConfig();
@@ -119,6 +121,7 @@ classdef TestCoolingLaw < matlab.unittest.TestCase
         end
 
         function presentationUsesConfiguredOutputPath(testCase)
+            % Regression check: plotting should honor an explicit export path.
             config = GetDefaultCoolingConfig();
             [timeDisc, tempNum] = DiffSol( ...
                 config.k, config.tempAmbient, config.tempInitial, ...

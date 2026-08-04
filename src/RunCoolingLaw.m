@@ -8,8 +8,10 @@ function result = RunCoolingLaw(config)
 % - config
 
 if nargin == 0 || isempty(config)
+    % Use the default configuration when no explicit settings are provided.
     config = GetDefaultCoolingConfig();
 else
+    % Merge caller overrides onto defaults so partial configs still work.
     config = mergeConfig(config, GetDefaultCoolingConfig());
 end
 
@@ -32,11 +34,13 @@ validateattributes(config.numIntervals, {'numeric'}, {'scalar', 'real', 'finite'
     config.tStart, config.tMax, config.numIntervals);
 
 showOutput = isfield(config, 'verbose') && logical(config.verbose);
+% Compute the RMS error against the analytical solution for the current discretization.
 err = EstimateError(config.numIntervals, timeDisc, tempExactFn, tempNum, false);
 
 tempFinalExact = tempExactFn(config.tMax);
 tempFinalNum = tempNum(end);
 
+% Keep summary values in a structured form so callers can rely on a stable contract.
 summary = struct();
 summary.numIntervals = config.numIntervals;
 summary.timeStart = config.tStart;
