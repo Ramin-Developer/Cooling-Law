@@ -70,7 +70,7 @@ All planned modernization phases and follow-up tasks in this document are comple
   - future LaTeX documentation location and build notes
 - Add one comparison plot preview image (optional) and expected output description.
 
-### 0.2 GitHub About section
+### 0.2 GitHub About section ✓
 Set these in repository About:
 - Description: `Newton cooling law solver (analytical + numerical) in MATLAB with LaTeX documentation.`
 - Website: (optional docs site/release URL when available)
