@@ -1,5 +1,9 @@
-function PresentData(tStart, tMax, timeDisc, tempExactFn, tempNum, tempAsymFn)
+function PresentData(tStart, tMax, timeDisc, tempExactFn, tempNum, tempAsymFn, outputPath)
 %PRESENTDATA Plot analytical/numerical results and export comparison figure.
+
+if nargin < 7 || isempty(outputPath)
+    outputPath = 'Comparison.pdf';
+end
 
 validateattributes(tStart, {'numeric'}, {'scalar', 'real', 'finite'}, mfilename, 'tStart');
 validateattributes(tMax, {'numeric'}, {'scalar', 'real', 'finite', '>', tStart}, mfilename, 'tMax');
@@ -16,10 +20,10 @@ tempAsymVals = tempAsymFn(t);
 tempExactVals = tempExactFn(t);
 
 % Initializing a new figure
-hFig = figure();
+hFig = figure('Visible', 'off');
 set(hFig, 'Color', 'White');
 set(hFig, 'Name', 'Newton''s Law of Cooling');
-set(hFig, 'Units', 'normalized', 'Position', [0, 0, 1, 1]);
+set(hFig, 'Units', 'normalized');
 plotSize = 32;
 markerSize = 24;
 
@@ -52,10 +56,10 @@ grid;
 
 % Export plot with graceful fallback when export_fig is unavailable.
 if exist('export_fig', 'file') == 2
-    export_fig Comparison.pdf -q101;
+    export_fig(outputPath, '-q101');
 elseif exist('exportgraphics', 'file') == 2
-    exportgraphics(gcf, 'Comparison.pdf', 'ContentType', 'vector');
+    exportgraphics(gcf, outputPath, 'ContentType', 'vector');
 else
-    print(gcf, 'Comparison.pdf', '-dpdf');
+    print(gcf, outputPath, '-dpdf');
 end
 

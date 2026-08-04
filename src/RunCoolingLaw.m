@@ -9,6 +9,8 @@ function result = RunCoolingLaw(config)
 
 if nargin == 0 || isempty(config)
     config = GetDefaultCoolingConfig();
+else
+    config = mergeConfig(config, GetDefaultCoolingConfig());
 end
 
 validateattributes(config.k, {'numeric'}, {'scalar', 'real', 'finite', 'positive'}, ...
@@ -29,11 +31,7 @@ validateattributes(config.numIntervals, {'numeric'}, {'scalar', 'real', 'finite'
     config.k, config.tempAmbient, config.tempInitial, ...
     config.tStart, config.tMax, config.numIntervals);
 
-showOutput = false;
-if isfield(config, 'verbose')
-    showOutput = logical(config.verbose);
-end
-
+showOutput = isfield(config, 'verbose') && logical(config.verbose);
 err = EstimateError(config.numIntervals, timeDisc, tempExactFn, tempNum, false);
 
 tempFinalExact = tempExactFn(config.tMax);
@@ -68,3 +66,15 @@ result.tempAsymFn = tempAsymFn;
 result.error = err;
 result.config = config;
 result.summary = summary;
+end
+
+function merged = mergeConfig(userConfig, defaultConfig)
+merged = defaultConfig;
+fieldNames = fieldnames(userConfig);
+for i = 1:numel(fieldNames)
+    fieldName = fieldNames{i};
+    if isfield(defaultConfig, fieldName)
+        merged.(fieldName) = userConfig.(fieldName);
+    end
+end
+end
